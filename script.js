@@ -75,6 +75,22 @@ function temizle() {
   servisSonuc.textContent = "";
 }
 
+document.addEventListener(
+  "dblclick",
+  (event) => {
+    event.preventDefault();
+  },
+  { passive: false }
+);
+
+document.addEventListener(
+  "gesturestart",
+  (event) => {
+    event.preventDefault();
+  },
+  { passive: false }
+);
+
 fetchGistData();
 
 if ("serviceWorker" in navigator) {
