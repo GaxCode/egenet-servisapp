@@ -1,1 +1,50 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Servis Bulucu</title>
+
+  <meta name="theme-color" content="#0f172a">
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon-192.png">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="app">
+
+    <div id="servisSonuc">Yükleniyor...</div>
+
+    <div id="girisEkrani"></div>
+
+    <div id="durumMesaji"></div>
+
+    <div class="keypad">
+      <button onclick="ekle('1')">1</button>
+      <button onclick="ekle('2')">2</button>
+      <button onclick="ekle('3')">3</button>
+
+      <button onclick="ekle('4')">4</button>
+      <button onclick="ekle('5')">5</button>
+      <button onclick="ekle('6')">6</button>
+
+      <button onclick="ekle('7')">7</button>
+      <button onclick="ekle('8')">8</button>
+      <button onclick="ekle('9')">9</button>
+
+      <button class="danger" onclick="sil()">⌫</button>
+      <button onclick="ekle('0')">0</button>
+      <button class="danger" onclick="temizle()">C</button>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
