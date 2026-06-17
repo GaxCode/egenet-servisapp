@@ -30,14 +30,16 @@ async function fetchGistData() {
 
 function ekle(rakam) {
   if (!servisAraliklari.length) return;
-
   if (girilenKod.length >= MAX_HANE) return;
 
+  // DOM manipülasyonunu anlık yap
   girilenKod += rakam;
-
   girisEkrani.textContent = girilenKod;
 
-  kontrolEt();
+  // Hızlı işlemde arayüzün donmaması için küçük bir gecikme ile kontrol et
+  requestAnimationFrame(() => {
+      kontrolEt();
+  });
 }
 
 function kontrolEt() {
