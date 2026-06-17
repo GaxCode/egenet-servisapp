@@ -24,7 +24,6 @@ async function fetchGistData() {
     durumMesaji.textContent = "";
   } catch (error) {
     console.error(error);
-
     durumMesaji.textContent = "Bağlantı hatası";
   }
 }
@@ -38,45 +37,41 @@ function ekle(rakam) {
 
   girisEkrani.textContent = girilenKod;
 
-  servisSonuc.textContent = "";
-
-  if (girilenKod.length === MAX_HANE) {
-    kontrolEt();
-  }
+  kontrolEt();
 }
 
 function kontrolEt() {
+  if (!girilenKod) {
+    servisSonuc.textContent = "";
+    return;
+  }
+
   const numara = Number(girilenKod);
 
   const kayit = servisAraliklari.find(
     ([baslangic, bitis]) =>
-      numara >= baslangic && numara <= bitis
+      numara >= baslangic &&
+      numara <= bitis
   );
 
   if (kayit) {
     servisSonuc.textContent = kayit[2];
-
-    if (navigator.vibrate) {
-      navigator.vibrate(80);
-    }
   } else {
     servisSonuc.textContent = "";
   }
-
-  setTimeout(temizle, 3000);
 }
 
 function sil() {
   girilenKod = girilenKod.slice(0, -1);
 
-  girisEkrani.textContent = girilenKod || "••••••••••";
+  girisEkrani.textContent = girilenKod || "";
 
-  servisSonuc.textContent = "";
+  kontrolEt();
 }
 
 function temizle() {
   girilenKod = "";
-  girisEkrani.textContent = "••••••••••";
+  girisEkrani.textContent = "";
   servisSonuc.textContent = "";
 }
 
@@ -87,4 +82,3 @@ if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("./sw.js");
   });
 }
-
