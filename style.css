@@ -1,1 +1,83 @@
-css
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0f172a, #1e293b);
+  font-family: Arial, sans-serif;
+}
+
+.app {
+  width: 100%;
+  max-width: 420px;
+  margin: auto;
+  padding: 20px;
+}
+
+#servisSonuc {
+  min-height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 44px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+
+  background: rgba(255,255,255,.08);
+  border-radius: 24px;
+  margin-top: 20px;
+}
+
+#girisEkrani {
+  height: 70px;
+  margin: 20px 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+  font-size: 36px;
+  letter-spacing: 6px;
+
+  background: rgba(255,255,255,.08);
+  border-radius: 20px;
+}
+
+#durumMesaji {
+  min-height: 24px;
+  color: #cbd5e1;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+button {
+  height: 85px;
+  border: none;
+  border-radius: 24px;
+
+  background: rgba(255,255,255,.1);
+  color: white;
+
+  font-size: 32px;
+  font-weight: bold;
+}
+
+button:active {
+  transform: scale(.96);
+}
+
+.danger {
+  background: #dc2626;
+}
