@@ -1,4 +1,4 @@
-const CACHE_NAME = "servis-bulucu-v1";
+const CACHE_NAME = "servis-bulucu-v2";
 
 const FILES = [
   "./",
