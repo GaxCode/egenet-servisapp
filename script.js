@@ -1,16 +1,12 @@
 const gistUrl = "https://gist.githubusercontent.com/GaxCode/5e964c03dc03c71bba51b63caa6788d4/raw/sgk-egenet-servisler.txt";
-
 let servisAraliklari = [];
 let girilenKod = "";
 
 const servisSonuc = document.getElementById("servisSonuc");
 const girisEkrani = document.getElementById("girisEkrani");
-const durumMesaji = document.getElementById("durumMesaji");
 
 async function fetchGistData() {
   try {
-    durumMesaji.textContent = "🌐 Veriler yükleniyor...";
-
     const response = await fetch(gistUrl);
 
     if (!response.ok) {
@@ -19,75 +15,54 @@ async function fetchGistData() {
 
     servisAraliklari = await response.json();
 
-    durumMesaji.textContent =
-      `✅ ${servisAraliklari.length} kayıt yüklendi`;
-
-    servisSonuc.textContent = "Kod girin";
-
   } catch (err) {
-    durumMesaji.textContent = "⚠️ Bağlantı hatası";
-    servisSonuc.textContent = "Veri yüklenemedi";
+    console.error(err);
   }
 }
 
 function ekle(rakam) {
   if (!servisAraliklari.length) return;
 
-  if (girilenKod.length >= 4) return;
+  if (girilenKod.length >= 10) return;
+
+  if (navigator.vibrate) {
+    navigator.vibrate(10);
+  }
 
   girilenKod += rakam;
+
   girisEkrani.textContent = girilenKod;
 
   kontrolEt();
 }
 
 function kontrolEt() {
-  if (girilenKod.length < 4) {
-    servisSonuc.textContent = "4 haneli kod";
-    return;
-  }
-
   const numara = Number(girilenKod);
 
   const kayit = servisAraliklari.find(
     ([baslangic, bitis]) =>
-      numara >= baslangic && numara <= bitis
+      numara >= baslangic &&
+      numara <= bitis
   );
 
-  if (kayit) {
-    servisSonuc.textContent = `SERVİS ${kayit[2]}`;
-  } else {
-    servisSonuc.textContent = "Bulunamadı";
-  }
-
-  if (navigator.vibrate) {
-    navigator.vibrate(80);
-  }
-
-  setTimeout(temizle, 3000);
+  servisSonuc.textContent = kayit
+    ? `SERVİS ${kayit[2]}`
+    : "";
 }
 
 function sil() {
   girilenKod = girilenKod.slice(0, -1);
-  girisEkrani.textContent = girilenKod;
 
-  if (girilenKod.length === 0) {
-    servisSonuc.textContent = "Kod girin";
-  } else {
-    kontrolEt();
-  }
+  girisEkrani.textContent = girilenKod || "0";
+
+  kontrolEt();
 }
 
 function temizle() {
   girilenKod = "";
-  girisEkrani.textContent = "";
-  servisSonuc.textContent = "Kod girin";
+
+  girisEkrani.textContent = "0";
+  servisSonuc.textContent = "";
 }
 
 fetchGistData();
-
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./sw.js");
-  });
-}
