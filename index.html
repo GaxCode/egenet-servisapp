@@ -2,14 +2,25 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
 
   <title>Servis Bulucu</title>
 
-  <meta name="theme-color" content="#0f172a">
+  <meta name="theme-color" content="#000000">
 
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="icon-192.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  >
 
   <link rel="stylesheet" href="style.css">
 </head>
@@ -18,13 +29,16 @@
 
   <div class="app">
 
-    <div id="servisSonuc">Yükleniyor...</div>
+    <div id="servisSonuc"></div>
 
-    <div id="girisEkrani"></div>
-
-    <div id="durumMesaji"></div>
+    <div id="girisEkrani">0</div>
 
     <div class="keypad">
+
+      <button class="secondary" onclick="temizle()">C</button>
+      <button class="secondary" onclick="sil()">⌫</button>
+      <button class="empty"></button>
+
       <button onclick="ekle('1')">1</button>
       <button onclick="ekle('2')">2</button>
       <button onclick="ekle('3')">3</button>
@@ -37,9 +51,8 @@
       <button onclick="ekle('8')">8</button>
       <button onclick="ekle('9')">9</button>
 
-      <button class="danger" onclick="sil()">⌫</button>
-      <button onclick="ekle('0')">0</button>
-      <button class="danger" onclick="temizle()">C</button>
+      <button class="zero" onclick="ekle('0')">0</button>
+
     </div>
 
   </div>
