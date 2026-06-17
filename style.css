@@ -3,81 +3,112 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+html,
 body {
   margin: 0;
-  min-height: 100vh;
-  background: linear-gradient(180deg, #0f172a, #1e293b);
-  font-family: Arial, sans-serif;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  background: #000;
+  color: white;
+
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
 }
 
 .app {
   width: 100%;
-  max-width: 420px;
-  margin: auto;
-  padding: 20px;
+  max-width: 430px;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  padding:
+    max(20px, env(safe-area-inset-top))
+    20px
+    max(30px, env(safe-area-inset-bottom))
+    20px;
 }
 
 #servisSonuc {
-  min-height: 130px;
+  min-height: 70px;
+
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 
-  font-size: 44px;
-  font-weight: bold;
-  color: white;
-  text-align: center;
+  color: #34c759;
+  font-size: 48px;
+  font-weight: 700;
 
-  background: rgba(255,255,255,.08);
-  border-radius: 24px;
-  margin-top: 20px;
+  margin-bottom: 12px;
 }
 
 #girisEkrani {
-  height: 70px;
-  margin: 20px 0;
-
   display: flex;
+  justify-content: flex-end;
   align-items: center;
-  justify-content: center;
 
-  color: white;
-  font-size: 36px;
-  letter-spacing: 6px;
+  min-height: 120px;
 
-  background: rgba(255,255,255,.08);
-  border-radius: 20px;
-}
+  font-size: clamp(48px, 12vw, 80px);
+  font-weight: 300;
 
-#durumMesaji {
-  min-height: 24px;
-  color: #cbd5e1;
-  text-align: center;
-  margin-bottom: 20px;
+  overflow: hidden;
+  word-break: break-all;
+
+  margin-bottom: 28px;
 }
 
 .keypad {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
+  gap: 16px;
 }
 
 button {
-  height: 85px;
-  border: none;
-  border-radius: 24px;
+  height: 82px;
 
-  background: rgba(255,255,255,.1);
+  border: none;
+  border-radius: 50%;
+
+  background: #333;
   color: white;
 
-  font-size: 32px;
-  font-weight: bold;
+  font-size: 34px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.1s ease,
+    filter 0.1s ease;
 }
 
 button:active {
-  transform: scale(.96);
+  transform: scale(0.95);
+  filter: brightness(1.2);
 }
 
-.danger {
-  background: #dc2626;
+.secondary {
+  background: #a5a5a5;
+  color: #000;
+}
+
+.zero {
+  grid-column: span 3;
+
+  border-radius: 42px;
+}
+
+.empty {
+  visibility: hidden;
+  pointer-events: none;
 }
