@@ -104,27 +104,21 @@ body {
 }
 
 button {
-  height: min(18vw, 88px);
-  min-height: 68px;
-
+  height: min(20vw, 88px);
+  min-height: 70px;
   border: none;
-  border-radius: 28px;
-
-  background: rgba(255, 255, 255, 0.08);
+  border-radius: 11px;
+  background: rgb(255 255 255 / 21%);
   backdrop-filter: blur(20px);
-
   color: #ffffff;
-
   font-family: inherit;
   font-size: clamp(28px, 7vw, 34px);
   font-weight: 700;
-
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-
   transition: transform 0.12s ease;
-
   touch-action: manipulation;
 }
+
 
 button:active {
   transform: scale(0.95);
