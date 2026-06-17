@@ -4,111 +4,160 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  touch-action: manipulation;
+  overscroll-behavior: none;
+
+  user-select: none;
+  -webkit-user-select: none;
+}
+
 body {
   margin: 0;
-  min-height: 100vh;
-  background:
-    radial-gradient(circle at top, #1e293b 0%, #0f172a 65%);
+
+  background: radial-gradient(
+    circle at top,
+    #1e293b 0%,
+    #0f172a 65%
+  );
 
   font-family: "Inter", sans-serif;
+  color: #ffffff;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  color: #fff;
+  padding:
+    env(safe-area-inset-top)
+    env(safe-area-inset-right)
+    env(safe-area-inset-bottom)
+    env(safe-area-inset-left);
 }
 
 .app {
   width: 100%;
   max-width: 430px;
-  padding: 20px;
+  height: 100dvh;
+
+  margin: 0 auto;
+  padding: 16px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 #servisSonuc {
-  height: 160px;
+  height: 20vh;
+  min-height: 120px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  font-size: 92px;
-  font-weight: 800;
-
   color: #60a5fa;
+
+  font-size: clamp(72px, 18vw, 96px);
+  font-weight: 800;
+  line-height: 1;
 }
 
 #girisEkrani {
-  height: 72px;
+  height: 64px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  margin-bottom: 18px;
+  margin-bottom: 14px;
 
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(20px);
 
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 24px;
 
-  font-size: 28px;
+  color: #e2e8f0;
+
+  font-size: clamp(20px, 5vw, 28px);
   font-weight: 600;
+
   letter-spacing: 3px;
 
-  color: #e2e8f0;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 #durumMesaji {
   height: 24px;
 
+  margin-bottom: 18px;
+
   text-align: center;
-  font-size: 14px;
 
   color: #94a3b8;
 
-  margin-bottom: 22px;
+  font-size: 14px;
 }
 
 .keypad {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  gap: 14px;
 }
 
 button {
-  height: 88px;
+  height: min(18vw, 88px);
+  min-height: 68px;
 
   border: none;
   border-radius: 28px;
 
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(20px);
 
-  color: white;
+  color: #ffffff;
 
   font-family: inherit;
-  font-size: 34px;
+  font-size: clamp(28px, 7vw, 34px);
   font-weight: 700;
 
-  box-shadow:
-    0 10px 30px rgba(0,0,0,0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 
-  transition: transform .12s ease;
+  transition: transform 0.12s ease;
+
+  touch-action: manipulation;
 }
 
 button:active {
-  transform: scale(.95);
+  transform: scale(0.95);
 }
 
 .danger {
-  background: rgba(239, 68, 68, .18);
+  background: rgba(239, 68, 68, 0.18);
   color: #fca5a5;
 }
 
 .secondary {
-  background: rgba(96, 165, 250, .18);
+  background: rgba(96, 165, 250, 0.18);
   color: #93c5fd;
+}
+
+@media (max-height: 700px) {
+  .app {
+    justify-content: flex-start;
+    padding-top: 24px;
+  }
+
+  #servisSonuc {
+    height: 14vh;
+    min-height: 90px;
+  }
+
+  button {
+    min-height: 58px;
+  }
 }
 
