@@ -1,4 +1,4 @@
-const gistUrl = "GIST_RAW_URL_BURAYA";
+const gistUrl = "https://gist.githubusercontent.com/GaxCode/5e964c03dc03c71bba51b63caa6788d4/raw/sgk-egenet-servisler.txt";
 
 let servisAraliklari = [];
 let girilenKod = "";
